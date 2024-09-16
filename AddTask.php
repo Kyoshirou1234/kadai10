@@ -1,11 +1,6 @@
 <?php
-ini_set("display_errors", 1);
-
-try {
-    $pdo = new PDO('mysql:dbname=kadai9;charset=utf8;host=localhost', 'root', '');
-} catch (PDOException $e) {
-    exit('DBError: ' . $e->getMessage());
-}
+include("function/funcs.php");
+$pdo = ReadDB();
 
 // Fetch worknames
 $stmt_workname = $pdo->prepare("SELECT workname FROM work");
@@ -91,7 +86,7 @@ if (isset($_POST['send'])) {
             </form>
         </div>
         <div class="tab">
-            <form action="addWork.php" method="post">
+            <form action="AddWork.php" method="post">
                 <input type="submit" value="業務を追加" />
             </form>
         </div>

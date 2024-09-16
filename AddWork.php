@@ -1,12 +1,6 @@
 <?php
-ini_set("display_errors", 1);
-
-try {
-    //$pdo = new PDO('mysql:dbname=tech-27-k_kadai9;charset=utf8;host=mysql57.tech-27-k.sakura.ne.jp', 'tech-27-k', '52P34w57d3');
-    $pdo = new PDO('mysql:dbname=kadai9;charset=utf8;host=localhost', 'root', '');
-} catch (PDOException $e) {
-    exit('DBError: '.$e->getMessage());
-}
+include("function/funcs.php");
+$pdo = ReadDB();
 
 // Handle form submission
 if (isset($_POST['send'])) {
@@ -79,7 +73,7 @@ if (isset($_POST['send'])) {
             </form>
         </div>
         <div class="tab">
-            <form action="addWork.php" method="post">
+        <form action="AddWork.php" method="post">
                 <input type="submit" value="業務を追加" />
             </form>
         </div>
@@ -117,7 +111,6 @@ if (isset($_POST['send'])) {
             <div class="form-group">
                 <label for="phase">フェーズ：</label>
                 <select id="phase" name="phase">
-                    <!-- Options will be added by JavaScript -->
                 </select>
             </div>
 
@@ -140,11 +133,8 @@ if (isset($_POST['send'])) {
                 sl.appendChild(op);
             }
         }
-
-        let values_name = <?= json_encode($values_name); ?>;
         let phase = ["提案中", "構築中", "運用中"];
 
-        CreateSelect(values_name, "workname");
         CreateSelect(phase, "phase");
         </script>
     </div>

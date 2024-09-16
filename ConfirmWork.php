@@ -120,7 +120,7 @@ else {
             </form>
         </div>
         <div class="tab">
-            <form action="addWork.php" method="post">
+        <form action="AddWork.php" method="post">
                 <input type="submit" value="業務を追加" />
             </form>
         </div>
